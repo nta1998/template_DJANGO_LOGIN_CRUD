@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile,Post
+from .models import FacebookUsers,Post
 # Register your models here.
-admin.site.register(Profile)
+admin.site.register(FacebookUsers)
 admin.site.register(Post)

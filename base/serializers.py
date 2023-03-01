@@ -1,7 +1,7 @@
 # ------import------
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
-from .models import Profile,Post
+from .models import FacebookUsers,Post
 # ------login serializers return token-------
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -12,14 +12,14 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # ...
         return token
 # -----model serializers-----
-class ProfileSerializer(serializers.ModelSerializer):
+class FacebookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Profile
+        model = FacebookUsers
         fields = '__all__'
     def create(self, validated_data):
         user = self.context['user']
         print(user)
-        return Profile.objects.create(**validated_data,user=user)
+        return FacebookUsers.objects.create(**validated_data,user=user)
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
